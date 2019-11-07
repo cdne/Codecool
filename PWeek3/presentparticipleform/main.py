@@ -3,8 +3,8 @@ import sys
 # geetting number of arguments 
 argumentsSize = len(sys.argv)
 
-# list for all vocals
-vocals = ['a', 'e', 'i', 'o', 'u']
+# list for all vowels
+vowels = ['a', 'e', 'i', 'o', 'u']
 
 # declaring string for lastLetter condition
 lastLetter = ""
