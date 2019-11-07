@@ -1,8 +1,3 @@
-'''
-Write a program which takes two numbers from a command 
-line and prints the greatest common divisor of them.
-'''
-
 number_one = int(input("Enter first number: "))
 number_two = int(input("Enter second number: "))
 listOfNumbers = []

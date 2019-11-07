@@ -1,8 +1,3 @@
-'''
-Write a script that prints out the first 30 numbers of
-the Fibonacci sequence to the standard output.
-'''
-
 i = 0
 j = 1
 k = 0
