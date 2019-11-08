@@ -78,9 +78,7 @@ def sort_abc(file_name):
         for second in range(0, len(game_title_list) - first - 1):
             if game_title_list[second] > game_title_list[second + 1]:
                 game_title_list[second], game_title_list[second + 1] = game_title_list[second + 1], game_title_list[second]
-
     return game_title_list
-    # return sorted(game_title_list)
 
 
 # Get all genres
@@ -90,7 +88,12 @@ def get_genres(file_name):
     game_list = import_game_stats(file_name)
     for game in game_list:
         genre_list.append(game[GENRE])
-    return bubble_sort(list(set(genre_list)))
+    genre_list = list(set(genre_list))
+    for first in range(len(genre_list)):
+        for second in range(0, len(genre_list) - first - 1):
+            if genre_list[second] > genre_list[second + 1]:
+                genre_list[second], genre_list[second + 1] = genre_list[second + 1], genre_list[second]
+    return genre_list
 
 
 # Get release date for top sold fps game
