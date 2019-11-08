@@ -21,10 +21,10 @@ def count_games(file_name):
 
 # Checks if there is a game of given year
 def decide(file_name, year):
-    GAME_YEAR = 2
+    RELEASE_YEAR = 2
     game_list = import_game_stats(file_name)
     for each_game in game_list:
-        if str(year) == each_game[GAME_YEAR]:
+        if str(year) == each_game[RELEASE_YEAR]:
             return True
     return False
 
@@ -32,15 +32,15 @@ def decide(file_name, year):
 # Returns the latest game by year
 def get_latest(file_name):
     TITLE = 0
-    YEAR = 2
+    RELEASE_YEAR = 2
     game_list = import_game_stats(file_name)
     year_list = []
     latest_game = 0
     for game in game_list:
-        year_list.append(game[YEAR])
+        year_list.append(game[RELEASE_YEAR])
     latest_game = max(year_list)
     for game in game_list:
-        if str(latest_game) == game[YEAR]:
+        if str(latest_game) == game[RELEASE_YEAR]:
             return game[TITLE]
 
 
@@ -67,22 +67,47 @@ def get_line_number_by_title(file_name, title):
     raise ValueError
 
 
-#
-def bubble_sort(list):
-    lenght_list = len(list)
-    for first in range(lenght_list):
-        for second in range(0, lenght_list - first - 1):
-            if list[second] > list[second + 1]:
-                list[second], list[second + 1] = list[second + 1], list[second]
-
-    return list 
-
-
 def sort_abc(file_name):
     game_title_list = []
     TITLE = 0
     game_list = import_game_stats(file_name)
     for game in game_list:
         game_title_list.append(game[TITLE])
-    return bubble_sort(game_title_list)
+
+    for first in range(len(game_title_list)):
+        for second in range(0, len(game_title_list) - first - 1):
+            if game_title_list[second] > game_title_list[second + 1]:
+                game_title_list[second], game_title_list[second + 1] = game_title_list[second + 1], game_title_list[second]
+
+    return game_title_list
     # return sorted(game_title_list)
+
+
+# Get all genres
+def get_genres(file_name):
+    genre_list = []
+    GENRE = 3
+    game_list = import_game_stats(file_name)
+    for game in game_list:
+        genre_list.append(game[GENRE])
+    return bubble_sort(list(set(genre_list)))
+
+
+# Get release date for top sold fps game
+def when_was_top_sold_fps(file_name):
+    COPIES_SOLD = 1
+    RELEASE_YEAR = 2
+    GENRE = 3
+    top_copies_sold = 0
+    copies_sold = []
+    fps_games = []
+    game_list = import_game_stats(file_name)
+    try:
+        fps_games = [game for game in game_list if 'First-person shooter' == game[GENRE]]
+        copies_sold = [float(game[COPIES_SOLD]) for game in fps_games]
+        top_copies_sold = max(copies_sold)
+        for game in game_list:
+            if str(top_copies_sold) == game[COPIES_SOLD]:
+                return int(game[RELEASE_YEAR])
+    except ValueError:
+        raise ValueError
