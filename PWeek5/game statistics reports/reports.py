@@ -1,4 +1,6 @@
 # Report functions
+
+
 # Import file lines in a double list
 def import_game_stats(file_name):
     game_list = []
@@ -66,10 +68,21 @@ def get_line_number_by_title(file_name, title):
 
 
 #
+def bubble_sort(list):
+    lenght_list = len(list)
+    for first in range(lenght_list):
+        for second in range(0, lenght_list - first - 1):
+            if list[second] > list[second + 1]:
+                list[second], list[second + 1] = list[second + 1], list[second]
+
+    return list 
+
+
 def sort_abc(file_name):
     game_title_list = []
     TITLE = 0
     game_list = import_game_stats(file_name)
     for game in game_list:
         game_title_list.append(game[TITLE])
-    return sorted(game_title_list)
+    return bubble_sort(game_title_list)
+    # return sorted(game_title_list)
