@@ -105,9 +105,7 @@ def get_date_ordered(file_name):
     TITLE = 0
     game_list = import_games(file_name)
     sorted_game_titles = []
-
     game_list.sort(key = lambda x: x[2])
     for game in game_list:
-        if 
         sorted_game_titles.append(game[TITLE]) 
     return sorted_game_titles[::-1]
