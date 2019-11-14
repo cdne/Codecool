@@ -9,6 +9,8 @@ Example: 11010 2
          33 10
          11110011 2
 '''
+
+
 print(instructions)
 while True:
     try:
@@ -18,7 +20,6 @@ while True:
         print("You didn't enter as instructed try again")
         first_number, second_number = input("Enter 2 numbers: ").split()
         
-
 
 # convert from binary
 def convert_from_binary(number):
@@ -31,6 +32,7 @@ def convert_from_binary(number):
         i += 1
     return result
     
+         
 # convert from decimal
 def convert_from_decimal(number):
     temporary_list = []
@@ -41,12 +43,14 @@ def convert_from_decimal(number):
     str1 = ''.join(temporary_list)  
     return str1[::-1]
 
+# method for user to try again
 def try_again():
     print(instructions)
     global first_number
     global second_number
     first_number, second_number = input("Enter 2 numbers: ").split()
 
+         
 # check if first number is binary
 def check_if_is_binary():
     flag = False
@@ -59,6 +63,8 @@ def check_if_is_binary():
             else:
                 flag = False
     return flag
+
+
 try:
     # converts from binary to decimal and decimal to binary           
     def make_conversion():
