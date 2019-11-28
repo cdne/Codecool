@@ -8,6 +8,7 @@ def get_input():
     idea = input('What is your new idea: ')
     return idea
 
+
 def read_ideas(file_name):
     with open(file_name, 'r') as the_file:
         all_ideas = the_file.readlines()
