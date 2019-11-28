@@ -2,7 +2,7 @@ import sys
 
 FIRST_ARGUMENT = 1
 SECOND_ARGUMENT = 2
-FILE = 'week 3/ideas.txt'
+FILE = 'ideas.txt'
 
 def get_input():
     idea = input('What is your new idea: ')
@@ -36,7 +36,7 @@ def get_remove_input():
 
 
 def remove_ideas(idea_to_remove):
-    my_ideas = read_ideas('ideas.txt')
+    my_ideas = read_ideas(FILE)
     for index in range(len(my_ideas)):
         if index + 1 == idea_to_remove:
             my_ideas.pop(index)
@@ -52,11 +52,11 @@ def print_ideas(ideas):
 def ideabank():
     try:
         if sys.argv[FIRST_ARGUMENT] == '--list':
-            print_ideas(read_ideas('ideas.txt'))
+            print_ideas(read_ideas(FILE))
         elif sys.argv[FIRST_ARGUMENT] == '--delete':
             idea_to_remove = get_remove_input()
             new_ideas_list = remove_ideas(idea_to_remove)
-            write_ideas('ideas.txt', new_ideas_list)
+            write_ideas(FILE, new_ideas_list)
     except IndexError:
         add_ideas(FILE)
         print_ideas(read_ideas(FILE))
