@@ -1,18 +1,23 @@
 def calaculator():
     start_calculator = True
     while start_calculator:
-        number_one = number_input('first')
+        number_one = valid_number('first')
         operator = operator_input()
-        number_two = number_input('second')
+        number_two = valid_number('second')
         result = calculate(number_one, operator, number_two)
         print_result(result)
         start_calculator = try_again()
 
 
 def number_input(text):
+    number = int(input(f'Enter {text} number: '))
+    return number
+
+
+def valid_number(text):
     while True:
         try:
-            number = int(input(f'Enter {text} number: '))
+            number = number_input(text)
         except ValueError:
             print_error()
             continue
