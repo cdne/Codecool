@@ -18,7 +18,6 @@ def number_input():
             continue
         else:
             return number
-            break
 
 
 def operator_input():
@@ -27,7 +26,6 @@ def operator_input():
         operator = input('Enter one of this operators(- + * /): ')
         if operator in operators:
             return operator
-            break
         else:
             print_error()
             continue
